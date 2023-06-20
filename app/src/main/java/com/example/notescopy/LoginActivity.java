@@ -21,6 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button loginButton;
     private String emailOfUser;
     private String passwordOfUser;
+    private SharedPrefManager sharedPrefManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(v -> {
             onClick();
         });
+        sharedPrefManager = new SharedPrefManager(getApplicationContext());
     }
 
     private void onClick() {
@@ -62,8 +64,12 @@ public class LoginActivity extends AppCompatActivity {
         call.enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                Toast.makeText(LoginActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                if (response.body().getError().equals("200")) {
+                    sharedPrefManager.saveUser(response.body().getUser());
+                    Toast.makeText(LoginActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                }
+
             }
 
             @Override
@@ -73,4 +79,11 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (sharedPrefManager.isLoggedIn()) {
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        }
+    }
 }
