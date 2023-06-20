@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".LoginActivity">
 
     <TextView
@@ -28,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="44dp"
         android:textColorHint="@color/black"
+        android:textColor="@color/black"
         android:gravity="center"
         android:hint="Email"
         app:layout_constraintBottom_toTopOf="@+id/loginPassword"
@@ -39,6 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="252dp"
         android:textColorHint="@color/black"
+        android:textColor="@color/black"
         android:gravity="center"
         android:hint="Password"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".RegisterActivity">
 
     <TextView
@@ -27,6 +28,7 @@
         android:layout_width="match_parent"
         android:textColorHint="@color/black"
         android:gravity="center"
+        android:textColor="@color/black"
         android:hint="Name"
         android:layout_height="wrap_content"
         android:layout_marginBottom="36dp"
@@ -41,6 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="44dp"
         android:textColorHint="@color/black"
+        android:textColor="@color/black"
         android:gravity="center"
         android:hint="Email"
         app:layout_constraintBottom_toTopOf="@+id/registerPassword"
@@ -51,6 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="172dp"
+        android:textColor="@color/black"
         android:gravity="center"
         android:hint="Password"
         android:textColorHint="@color/black"
